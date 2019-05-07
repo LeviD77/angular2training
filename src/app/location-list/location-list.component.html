@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let location of locations">
+    <a routerLink="/location/{{ location.id }}">{{ location.name }}</a>
+    <span class="action-buttons">
+      <span><a routerLink="/location/{{ location.id }}">View</a></span>
+      <span><a routerLink="/location/edit/{{ location.id }}">Edit</a></span>
+      <span (click)="deleteLocation(location.id)">Delete</span>
+    </span>
+  </li>
+</ul>
