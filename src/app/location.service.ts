@@ -39,6 +39,7 @@ export class LocationService {
    * Gets location by ID
    */
   getLocation(id: number): Observable<Location> {
+    console.log(`${this.baseUrl}/api/locations/${id}`);
     return this.http.get<Location>(`${this.baseUrl}/api/locations/${id}`)
                     .pipe(
                       catchError(this.handleError<Location>('getLocation'))
@@ -70,6 +71,13 @@ export class LocationService {
     )
       .pipe(
         catchError(this.handleError<Location>('createLocation'))
+      );
+  }
+
+  deleteLocation(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/api/locations/${id}`,)
+      .pipe(
+        catchError(this.handleError<number>('deleteLocation'))
       );
   }
 

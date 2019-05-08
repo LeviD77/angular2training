@@ -2,9 +2,9 @@
   <li *ngFor="let location of locations">
     <a routerLink="/location/{{ location.id }}">{{ location.name }}</a>
     <span class="action-buttons">
-      <span><a routerLink="/location/{{ location.id }}">View</a></span>
-      <span><a routerLink="/location/edit/{{ location.id }}">Edit</a></span>
-      <span (click)="deleteLocation(location.id)">Delete</span>
+      <span><a routerLink="/location/{{ location.id }}" skipLocationChange>View</a></span>
+      <span><a routerLink="/location/edit/{{ location.id }}" skipLocationChange>Edit</a></span>
+      <span (click)="deleteLocation(location)"><a href="#">Delete</a></span>
     </span>
   </li>
 </ul>

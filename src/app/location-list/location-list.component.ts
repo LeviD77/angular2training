@@ -16,8 +16,23 @@ export class LocationListComponent implements OnInit {
     private locationService: LocationService
   ) { }
 
-  ngOnInit() {
+  getLocations(){
     this.locationService.getLocations()
-                        .subscribe(locations => this.locations = locations);
+      .subscribe(locations => this.locations = locations);
+  }
+  
+  ngOnInit() {
+   this.getLocations(); 
+  }
+
+  deleteLocation(location: Location){
+    if(confirm('Are you sure you want to delete? ID: ' + location.id)){
+      let index = this.locations.indexOf(location);
+
+      this.locations.splice(index, 1);
+
+      this.locationService.deleteLocation(location.id)
+        .subscribe(() => this.getLocations());
+    }
   }
 }

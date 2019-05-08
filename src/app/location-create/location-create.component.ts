@@ -9,7 +9,7 @@ import { Location } from '../location';
   templateUrl: './location-create.component.html',
   styleUrls: ['./location-create.component.css']
 })
-export class LocationCreateComponent implements OnInit {
+export class LocationCreateComponent {
 
   locationForm = new FormGroup({
     name: new FormControl(''),
@@ -22,6 +22,8 @@ export class LocationCreateComponent implements OnInit {
   ) { }
 
   onSubmit() {
+    console.log(this.locationForm.value);
+
     this.locationService.createLocation(this.locationForm.value)
       .subscribe(() => alert('Succesful save!'));
   }
